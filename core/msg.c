@@ -235,6 +235,7 @@ int msg_reply(msg_t *m, msg_t *reply)
         DEBUG("msg_reply(): %" PRIkernel_pid ": Target \"%" PRIkernel_pid
               "\" not existing...dropping msg!\n", sched_active_thread->pid,
               m->sender_pid);
+        restoreIRQ(state);
         return -1;
     }
 
